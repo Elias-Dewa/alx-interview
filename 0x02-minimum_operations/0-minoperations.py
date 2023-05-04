@@ -32,7 +32,7 @@ def minOperations(n):
 
     numOperations = 0
     minOperations = 2
-    while minOperations < n:
+    while minOperations <= n:
         while n % minOperations == 0:
             numOperations += minOperations
             n /= minOperations
