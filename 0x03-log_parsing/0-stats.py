@@ -7,7 +7,7 @@ from sys import stdin
 
 if __name__ == '__main__':
 
-    def parse_log(status_code, file_size):
+    def parse_log(file_size, status_code):
         status_code = {
             "200": 0,
             "301": 0,
@@ -29,14 +29,14 @@ if __name__ == '__main__':
         try:
             for line in stdin:
                 if count_lines % 10 == 0 and count_lines != 0:
-                    parse_log(status_code, file_size)
+                    parse_log(file_size, status_code)
                 data = line.split()
                 if len(data) >= 2:
                     arg = data[-2]
                     if arg in status_code.keys():
                         status_code[arg] += 1
                     file_size += int(data[-1])
-            parse_log(status_code, file_size)
+            parse_log(file_size, status_code)
         except KeyboardInterrupt as error:
-            parse_log(status_code, file_size)
+            parse_log(file_size, status_code)
             raise
