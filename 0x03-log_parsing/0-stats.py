@@ -7,19 +7,20 @@ from sys import stdin
 
 if __name__ == '__main__':
 
+    status_code = {
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0
+    }
+    file_size = 0
+    count_lines = 0
+
     def parse_log(file_size, status_code):
-        status_code = {
-            "200": 0,
-            "301": 0,
-            "400": 0,
-            "401": 0,
-            "403": 0,
-            "404": 0,
-            "405": 0,
-            "500": 0
-        }
-        file_size = 0
-        count_lines = 0
 
         print("File size: {:d}".format(file_size))
         for key in sorted(status_code.keys()):
