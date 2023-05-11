@@ -20,13 +20,13 @@ if __name__ == '__main__':
         count_lines = 0
 
         print("File size: {:d}".format(file_size))
-        for key, value in sorted(status_code.items()):
+        for key, value in status_code.items():
             if value:
                 print("{}:{:d}".format(key, value))
 
         try:
             for line in stdin:
-                if count_lines % 10 == 0:
+                if count_lines % 10 == 0 and count_lines != 0:
                     parse_log(status_code, file_size)
                 count_lines += 1
                 data = line.split(" ")
