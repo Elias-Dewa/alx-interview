@@ -10,6 +10,8 @@ if __name__ == '__main__':
     def parse_log(status_code, file_size):
         status_code = {
             "200": 0,
+            "301": 0,
+            "400": 0,
             "401": 0,
             "403": 0,
             "404": 0,
