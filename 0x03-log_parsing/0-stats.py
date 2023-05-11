@@ -20,7 +20,7 @@ if __name__ == '__main__':
         count_lines = 0
 
         print("File size: {:d}".format(file_size))
-        for key, value in status_code.items():
+        for key, value in sorted(status_code.items()):
             if value:
                 print("{}:{:d}".format(key, value))
 
@@ -30,11 +30,10 @@ if __name__ == '__main__':
                     parse_log(status_code, file_size)
                 count_lines += 1
                 data = line.split(" ")
-                if len(data) >= 2:
-                    arg = data[-2]
-                    if arg in status_code:
-                        status_code[arg] += 1
-                    file_size += int(data[-1])
+                arg = data[-2]
+                if arg in status_code:
+                    status_code[arg] += 1
+                file_size += int(data[-1])
             parse_log(status_code, file_size)
         except KeyboardInterrupt as error:
             parse_log(status_code, file_size)
