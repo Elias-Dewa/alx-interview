@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
         try:
             for line in stdin:
-                if count_lines % 10 == 0 and count_lines != 0:
+                if count_lines % 10 != 0 and count_lines != 0:
                     parse_log(status_code, file_size)
                 data = line.split()
                 if len(data) >= 2:
