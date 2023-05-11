@@ -22,9 +22,9 @@ if __name__ == '__main__':
         count_lines = 0
 
         print("File size: {:d}".format(file_size))
-        for key, value in sorted(status_code.items()):
-            if value:
-                print("{}: {:d}".format(key, value))
+        for key in sorted(status_code.keys()):
+            if status_code[key]:
+                print("{}: {:d}".format(key, status_code[key]))
 
         try:
             for line in stdin:
