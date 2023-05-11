@@ -34,7 +34,7 @@ if __name__ == '__main__':
                     arg = data[-2]
                     if arg in status_code:
                         status_code[arg] += 1
-                    file_size += data[-1]
+                    file_size += int(data[-1])
                 parse_log(status_code, file_size)
         except KeyboardInterrupt as error:
             print(status_code, file_size)
