@@ -20,8 +20,8 @@ if __name__ == '__main__':
     file_size = 0
     count_lines = 0
 
-    def parse_log(file_size, status_code):
-
+    def parse_log(status_code, file_size):
+        """a method to parse a log history"""
         print("File size: {:d}".format(file_size))
         for key in sorted(status_code.keys()):
             if status_code[key]:
@@ -30,14 +30,14 @@ if __name__ == '__main__':
         try:
             for line in stdin:
                 if count_lines % 10 == 0 and count_lines != 0:
-                    parse_log(file_size, status_code)
+                    parse_log(status_code, file_size)
                 data = line.split()
                 if len(data) >= 2:
                     arg = data[-2]
                     if arg in status_code.keys():
                         status_code[arg] += 1
                     file_size += int(data[-1])
-            parse_log(file_size, status_code)
-        except KeyboardInterrupt as error:
-            parse_log(file_size, status_code)
+            parse_log(status_code, file_size)
+        except KeyboardInterrupt:
+            parse_log(status_code, file_size)
             raise
