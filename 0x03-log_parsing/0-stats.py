@@ -30,8 +30,8 @@ if __name__ == '__main__':
             for line in stdin:
                 if count_lines % 10 == 0 and count_lines != 0:
                     parse_log(status_code, file_size)
-                data = line.split(" ")
-                if len(data):
+                data = line.split()
+                if len(data) >= 2:
                     arg = data[-2]
                     if arg in status_code:
                         status_code[arg] += 1
