@@ -33,7 +33,7 @@ if __name__ == '__main__':
                 data = line.split()
                 if len(data) >= 2:
                     arg = data[-2]
-                    if arg in status_code:
+                    if arg in status_code.keys():
                         status_code[arg] += 1
                     file_size += int(data[-1])
             parse_log(status_code, file_size)
