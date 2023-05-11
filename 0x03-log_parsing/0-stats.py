@@ -37,5 +37,5 @@ if __name__ == '__main__':
                     file_size += int(data[-1])
             parse_log(status_code, file_size)
         except KeyboardInterrupt as error:
-            print(status_code, file_size)
+            parse_log(status_code, file_size)
             raise
