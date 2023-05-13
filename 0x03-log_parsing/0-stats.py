@@ -2,7 +2,7 @@
 """a script that reads stdin line by line and computes metrics
 """
 
-from sys import stdin
+import sys
 
 
 if __name__ == '__main__':
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     count_lines = 0
 
     try:
-        for line in stdin:
+        for line in sys.stdin:
             data = line.split()
             if len(data) > 4:
                 arg = data[-2]
@@ -34,11 +34,11 @@ if __name__ == '__main__':
             if count_lines % 10 == 0:
                 print("File size: {:d}".format(total_file_sizes))
                 for key, value in sorted(status_code.items()):
-                    if value:
+                    if value != 0:
                         print("{}: {:d}".format(key, value))
                 count_lines = 0
     except KeyboardInterrupt:
         print("File size: {:d}".format(total_file_sizes))
         for key, value in sorted(status_code.items()):
-            if value:
+            if value != 0:
                 print("{}: {:d}".format(key, value))
