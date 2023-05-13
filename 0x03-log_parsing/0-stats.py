@@ -30,13 +30,13 @@ try:
             total_file_sizes += file_size
             count_lines += 1
         if count_lines % 10 == 0:
-            print("File size: {:d}".format(total_file_sizes))
+            print("File size: {}".format(total_file_sizes))
             for key, value in sorted(status_code.items()):
-                if value != 0:
-                    print("{}: {:d}".format(key, value))
+                if value:
+                    print("{}: {}".format(key, value))
             count_lines = 0
 except KeyboardInterrupt:
-    print("File size: {:d}".format(total_file_sizes))
+    print("File size: {}".format(total_file_sizes))
     for key, value in sorted(status_code.items()):
-        if value != 0:
-            print("{}: {:d}".format(key, value))
+        if value:
+            print("{}: {}".format(key, value))
