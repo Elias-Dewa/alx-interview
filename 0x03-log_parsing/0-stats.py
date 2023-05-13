@@ -2,7 +2,7 @@
 """a script that reads stdin line by line and computes metrics
 """
 
-import sys
+from sys import stdin
 
 
 if __name__ == '__main__':
@@ -18,28 +18,27 @@ if __name__ == '__main__':
         "500": 0
     }
     file_size = 0
+    total_file_sizes = 0
     count_lines = 0
 
     try:
-        for line in sys.stdin:
+        for line in stdin:
             data = line.split()
-            if len(data) > 6:
+            if len(data) > 4:
                 arg = data[-2]
-                file_size += int(data[-1])
-                if arg in status_code:
-                    count_lines += 1
+                file_size = int(data[-1])
+                if arg in status_code.keys():
                     status_code[arg] += 1
-                    if count_lines % 10 == 0:
-                        print("File size: {:d}".format(file_size))
-                        for key, value in sorted(status_code.items()):
-                            if value:
-                                print("{}: {:d}".format(key, value))
-        print("File size: {:d}".format(file_size))
-        for key, value in sorted(status_code.items()):
-            if value:
-                print("{}: {:d}".format(key, value))
+                total_file_sizes += file_size
+                count_lines += 1
+            if count_lines % 10 == 0:
+                print("File size: {:d}".format(total_file_sizes))
+                for key, value in sorted(status_code.items()):
+                    if value:
+                        print("{}: {:d}".format(key, value))
+                count_lines = 0
     except KeyboardInterrupt:
-        print("File size: {:d}".format(file_size))
+        print("File size: {:d}".format(total_file_sizes))
         for key, value in sorted(status_code.items()):
             if value:
                 print("{}: {:d}".format(key, value))
