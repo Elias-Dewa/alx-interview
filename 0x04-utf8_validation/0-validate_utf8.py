@@ -6,14 +6,15 @@
 def validUTF8(data):
     """ Define a method to determine a valid UTF-8 encoding
     """
-    if len(data) == 0:
-        return True
     if type(data) is not list:
         return False
-    if data[0] > 31 and data[0] < 126:
+    if len(data) == 0:
         return True
-    else:
-        return False
+    if len(data) == 1:
+        if data[0] > 31 and data[0] < 127:
+            return True
+        else:
+            return False
     for n in data:
         if type(n) is not int:
             return False
