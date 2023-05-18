@@ -10,6 +10,10 @@ def validUTF8(data):
         return True
     if type(data) is not list:
         return False
+    if data[0] > 31 and data[0] < 126:
+        return True
+    else:
+        return False
     for n in data:
         if type(n) is not int:
             return False
