@@ -4,6 +4,8 @@
 
 
 def validUTF8(data):
+    """ Define a method to determine a valid UTF-8 encoding
+    """
     if len(data) == 0:
         return True
     if type(data) is not list:
