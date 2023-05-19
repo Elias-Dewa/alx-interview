@@ -11,7 +11,7 @@ def validUTF8(data):
     if len(data) == 0 or not data:
         return True
     if len(data) == 1:
-        if data[0] > 31 and data[0] < 127:
+        if data[0] >= 32 and data[0] <= 126:
             return True
         else:
             return False
