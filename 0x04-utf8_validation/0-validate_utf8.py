@@ -8,7 +8,7 @@ def validUTF8(data):
     """
     if type(data) is not list:
         return False
-    if len(data) == 0:
+    if len(data) == 0 or not data:
         return True
     if len(data) == 1:
         if data[0] > 31 and data[0] < 127:
@@ -17,5 +17,11 @@ def validUTF8(data):
             return False
     for n in data:
         if type(n) is not int:
+            return False
+        if n > 31 and n < 127:
+            continue
+        elif n == 0:
+            continue
+        else:
             return False
     return True
