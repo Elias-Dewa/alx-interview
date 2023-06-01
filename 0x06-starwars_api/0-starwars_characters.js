@@ -7,24 +7,27 @@ if (process.argv.length === 3) {
 
   // Making API requests
   request(url, async (error, res, body) => {
-    if (error) return console.log(error);
+    if (error) {
+      console.log(error);
+    }
+    else {
+      // each character url
+      const urlList = JSON.parse(body).characters;
 
-    // each character url
-    const urlList = JSON.parse(body).characters;
-
-    // Get all characters
-    for (let chars of urlList) {
-      const answer = () => {
-        return new Promise((resolve, reject) => {
-        request(chars, async (error, res, body) => {
-          if (error) {
-            console.log(error);
-          }
-          resolve(JSON.parse(body).name);
+      // Get all characters
+      for (let chars of urlList) {
+        const answer = () => {
+          return new Promise((resolve, reject) => {
+          request(chars, async (error, res, body) => {
+            if (error) {
+              console.log(error);
+            }
+            resolve(JSON.parse(body).name);
+            });
           });
-        });
+        }
+        console.log(await answer());
       }
-      console.log(await answer());
     }
   });
 }
