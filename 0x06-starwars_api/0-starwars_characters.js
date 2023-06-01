@@ -3,14 +3,13 @@
 const request = require('request');
 
 if (process.argv.length === 3) {
-  const url = `https://swapi-api.alx-tools.com/api/${process.argv[2]}/`;
+  const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
 
   // Making API requests
   request(url, async (error, res, body) => {
     if (error) {
       console.log(error);
-    }
-    else {
+    } else {
       // each character url
       const urlList = JSON.parse(body).characters;
 
