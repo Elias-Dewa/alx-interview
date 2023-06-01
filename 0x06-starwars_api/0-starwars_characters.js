@@ -13,12 +13,16 @@ request(url, async (error, res, body) => {
 
   // Get all characters
   for (let chars of urlList) {
-    await new Promise((resolve, reject) => {
+    const await answer = () => {
+      return new Promise((resolve, reject) => {
       request(chars, async (error, res, body) => {
-        if (error) return console.log(error);
-        console.log(JSON.parse(body).name);
-        resolve();
+        if (error) {
+          console.log(error);
+        }
+        resolve(JSON.parse(body).name);
+        });
       });
-    });
+    }
+    console.log(await answer());
   }
 });
