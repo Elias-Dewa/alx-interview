@@ -13,7 +13,7 @@ request(url, async (error, res, body) => {
 
   // Get all characters
   for (let chars of urlList) {
-    const await answer = () => {
+    const answer = () => {
       return new Promise((resolve, reject) => {
       request(chars, async (error, res, body) => {
         if (error) {
