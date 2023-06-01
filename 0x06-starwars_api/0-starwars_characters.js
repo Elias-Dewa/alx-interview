@@ -5,7 +5,7 @@ const request = require('request');
 const url = "https://swapi-api.alx-tools.com/api/" + process.argv[2] + "/";
 
 // Making API requests
-request(url, async (error, res, body) => {
+request(url, 'utf-8', async (error, res, body) => {
   if (error) throw new Error(error);
 
   // each character url
@@ -14,7 +14,7 @@ request(url, async (error, res, body) => {
   // Get all characters
   for (let chars of urlList) {
     await new Promise((resolve, reject) => {
-      request(chars, async (error, res, body) => {
+      request(chars, 'utf-8', async (error, res, body) => {
         if (error) throw new Error(error);
         console.log(JSON.parse(body).name);
         resolve();
