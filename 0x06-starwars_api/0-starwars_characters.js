@@ -14,17 +14,17 @@ if (process.argv.length === 3) {
       const urlList = JSON.parse(body).characters;
 
       // Get all characters
-      for (let chars of urlList) {
+      for (const chars of urlList) {
         const answer = () => {
           return new Promise((resolve, reject) => {
-          request(chars, async (error, res, body) => {
-            if (error) {
-              console.log(error);
-            }
-            resolve(JSON.parse(body).name);
+            request(chars, async (error, res, body) => {
+              if (error) {
+                console.log(error);
+              }
+              resolve(JSON.parse(body).name);
             });
           });
-        }
+        };
         console.log(await answer());
       }
     }
