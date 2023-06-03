@@ -22,7 +22,7 @@ count_lines = 0
 try:
     for line in sys.stdin:
         data = line.split()
-        if len(data) > 4:
+        if len(data) >= 2:
             arg = data[-2]
             file_size = int(data[-1])
             if arg in status_code.keys():
