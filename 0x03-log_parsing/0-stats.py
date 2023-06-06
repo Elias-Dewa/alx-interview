@@ -22,7 +22,7 @@ status_code = {
 try:
     for line in sys.stdin:
         data = line.split(" ")
-        if len(data) >= 4:
+        if len(data) > 4:
             arg = data[-2]
             file_size = int(data[-1])
             if arg in status_code.keys():
@@ -33,10 +33,13 @@ try:
             count_lines = 0
             print("File size: {}".format(total_file_sizes))
             for key, value in sorted(status_code.items()):
-                if value:
+                if value != 0:
                     print("{}: {}".format(key, value))
 except KeyboardInterrupt:
+    pass
+
+finally:
     print("File size: {}".format(total_file_sizes))
     for key, value in sorted(status_code.items()):
-        if value:
+        if value != 0:
             print("{}: {}".format(key, value))
