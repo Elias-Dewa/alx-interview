@@ -3,7 +3,8 @@
 
 
 def primeNumber(i):
-    """a method that returns a number, which can be a winner, from each game"""
+    """a method that returns a number, which can be a winner,
+    from each game"""
     if (i < 1):
         return None
     if (i == 1):
