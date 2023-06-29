@@ -46,15 +46,16 @@ def isWinner(x, nums):
     if (x < 1 or x != len(nums)):
         return None
 
-    person_obj = {"Maria": 0, "Ben": 0}
+    Maria = 0
+    Ben = 0
     for i in nums:
         prime = primeNumber(i)
         if prime == 1:
-            person_obj["Maria"] += 1
+            Maria += 1
         elif prime == 2:
-            person_obj["Ben"] += 1
-    if person_obj["Maria"] == person_obj["Ben"]:
+            Ben += 1
+    if Maria == Ben:
         return None
-    elif person_obj["Maria"] > person_obj["Ben"]:
+    elif Maria > Ben:
         return "Maria"
     return "Ben"
